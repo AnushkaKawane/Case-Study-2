@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Perfume Finder</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="brand">
+            <div class="brand-icon">✦</div>
+
+            <div>
+                <h2>Perfume Finder</h2>
+                <p>Discover your signature scent</p>
+            </div>
+        </div>
+
+        <div class="header-pill">
+            Fragrance Discovery
+        </div>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <span class="eyebrow">FIND YOUR SCENT</span>
+
+            <h1>
+                What do you want
+                <span>to smell like?</span>
+            </h1>
+
+            <p>
+                Start with the fragrance feeling you love.
+                We'll narrow down the perfumes for you.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SMELL SELECTION -->
+    <section class="smell-section">
+
+        <div class="section-heading">
+
+            <h2>Choose a fragrance style</h2>
+
+            <p>
+                Select the type of scent you're looking for.
+            </p>
+
+        </div>
+
+
+        <div class="smell-grid">
+
+            <button class="smell-card" data-smell="floral">
+                <span class="smell-icon">🌸</span>
+                <strong>Floral</strong>
+                <span>Soft & elegant</span>
+            </button>
+
+            <button class="smell-card" data-smell="fresh">
+                <span class="smell-icon">💧</span>
+                <strong>Fresh</strong>
+                <span>Clean & refreshing</span>
+            </button>
+
+            <button class="smell-card" data-smell="woody">
+                <span class="smell-icon">🌲</span>
+                <strong>Woody</strong>
+                <span>Warm & deep</span>
+            </button>
+
+            <button class="smell-card" data-smell="sweet">
+                <span class="smell-icon">🍯</span>
+                <strong>Sweet</strong>
+                <span>Rich & creamy</span>
+            </button>
+
+            <button class="smell-card" data-smell="spicy">
+                <span class="smell-icon">🌶️</span>
+                <strong>Spicy</strong>
+                <span>Bold & intense</span>
+            </button>
+
+            <button class="smell-card" data-smell="citrus">
+                <span class="smell-icon">🍊</span>
+                <strong>Citrus</strong>
+                <span>Bright & zesty</span>
+            </button>
+
+            <button class="smell-card" data-smell="aquatic">
+                <span class="smell-icon">🌊</span>
+                <strong>Aquatic</strong>
+                <span>Cool & marine</span>
+            </button>
+
+            <button class="smell-card" data-smell="aromatic">
+                <span class="smell-icon">🌿</span>
+                <strong>Aromatic</strong>
+                <span>Herbal & fresh</span>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- SECONDARY SCENT -->
+    <section
+        id="secondarySection"
+        class="secondary-section hidden"
+    >
+
+        <div class="section-heading">
+
+            <h2 id="secondaryTitle">
+                Refine your preference
+            </h2>
+
+            <p>
+                Pick a more specific scent profile.
+            </p>
+
+        </div>
+
+        <div
+            id="secondaryOptions"
+            class="secondary-options"
+        ></div>
+
+    </section>
+
+
+    <!-- PERFUMES -->
+    <section
+        id="perfumeSection"
+        class="perfume-section hidden"
+    >
+
+        <div class="selected-filter">
+
+            <div>
+
+                <span class="eyebrow">
+                    MATCHING PERFUMES
+                </span>
+
+                <h2 id="selectedSmell">
+                    Floral perfumes
+                </h2>
+
+            </div>
+
+            <button
+                id="changeSmell"
+                class="outline-button"
+            >
+                Change smell
+            </button>
+
+        </div>
+
+
+        <div
+            id="perfumeGrid"
+            class="perfume-grid"
+        ></div>
+
+    </section>
+
+
+    <!-- PROFILE -->
+    <section
+        id="profileSection"
+        class="profile-section hidden"
+    >
+
+        <div class="section-heading">
+
+            <span class="eyebrow">
+                YOUR PERFUME
+            </span>
+
+            <h2>
+                Fragrance Profile
+            </h2>
+
+        </div>
+
+        <div
+            id="profileCard"
+            class="profile-card"
+        ></div>
+
+    </section>
+
+
+    <!-- PRICE COMPARISON -->
+    <section
+        id="priceSection"
+        class="price-section hidden"
+    >
+
+        <div class="section-heading">
+
+            <span class="eyebrow">
+                SHOP SMART
+            </span>
+
+            <h2>
+                Compare Prices
+            </h2>
+
+            <p>
+                Check different platforms before buying.
+            </p>
+
+        </div>
+
+
+        <div
+            id="priceCard"
+            class="price-card"
+        ></div>
+
+    </section>
+
+
+    <!-- SIMILAR PERFUMES -->
+    <section
+        id="recommendationSection"
+        class="recommendation-section hidden"
+    >
+
+        <div class="section-heading">
+
+            <span class="eyebrow">
+                YOU MAY ALSO LIKE
+            </span>
+
+            <h2>
+                Similar Perfumes
+            </h2>
+
+            <p>
+                Fragrances with a similar scent profile.
+            </p>
+
+        </div>
+
+
+        <div
+            id="recommendationGrid"
+            class="recommendation-grid"
+        ></div>
+
+    </section>
+
+
+    <!-- CHART -->
+    <section
+        id="chartSection"
+        class="chart-section hidden"
+    >
+
+        <div class="section-heading">
+
+            <span class="eyebrow">
+                FRAGRANCE MATCH
+            </span>
+
+            <h2>
+                How similar are they?
+            </h2>
+
+        </div>
+
+        <div class="chart-card">
+
+            <canvas id="similarityChart"></canvas>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-logo">
+            ✦ Perfume Finder
+        </div>
+
+        <p>
+            Discover fragrances that feel like you.
+        </p>
+
+    </footer>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
